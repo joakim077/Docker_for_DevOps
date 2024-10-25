@@ -52,6 +52,7 @@ At the core of Docker is the **Docker Engine**, responsible for creating, runnin
 - `docker kill <containername>`: Sends a SIGKILL signal to a running container, terminating it immediately
 - `docker rm <containername>`: Remove a stopped container.
 - `docker rmi <image>`: Remove an image.
+- `docker logs <containername>`: retrieves and displays the logs from the specified container.
 
 ---
 
