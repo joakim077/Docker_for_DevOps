@@ -1,0 +1,55 @@
+version: '3'
+services:
+    mysql:
+        image: mysql
+        restart: always
+        container_name: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: devops
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: admin
+        ports:
+          - 3306:3306
+        networks:
+          - proj-network
+        volumes:
+         - db-data:/var/lib/mysql
+        healthcheck:
+          test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+          interval: 1m30s
+          timeout: 10s
+          retries: 3
+          start_period: 40s
+          start_interval: 5s
+
+    my-app:
+        build:
+            context: ./
+        container_name: my-app
+        environment:
+            MYSQL_HOST: mysql
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: admin
+            MYSQL_DB: devops
+        ports:
+            - 5000:5000
+        networks:
+            - proj-network
+        depends_on:
+            - "mysql"
+        restart: always
+        healthcheck:
+            test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 30s
+
+volumes:
+    db-data:
+
+networks:
+    proj-network:
+
+
