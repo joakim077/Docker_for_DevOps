@@ -1,5 +1,5 @@
 
-# End-to-End Bank Application Deployment using DevSecOps on AWS EKS
+# End-to-End Bank Application Deployment on AWS EC2
 
 This project demonstrates an end-to-end deployment of a multi-tier bank application written in Java (Spring Boot) using DevSecOps practices. The application is containerized using Docker and can be deployed on AWS EKS (Elastic Kubernetes Service). The application includes user authentication and transaction management.
 
