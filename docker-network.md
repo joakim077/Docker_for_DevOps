@@ -1,6 +1,3 @@
-# Re-running the previous code to generate the Docker networking markdown file
-
-docker_networking_content = """
 # Docker Networking
 
 ## Key Networking Concepts
@@ -129,12 +126,5 @@ docker_networking_content = """
     ```
 
 Docker's networking capabilities provide flexible ways to isolate, connect, and manage communication between containers and with the host system.
-"""
 
-# Saving as a markdown (.md) file
-file_name = "/mnt/data/docker-networking.md"
-with open(file_name, "w") as file:
-    file.write(docker_networking_content)
-
-file_name
 
